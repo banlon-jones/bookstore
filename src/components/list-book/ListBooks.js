@@ -1,10 +1,19 @@
 import React from 'react';
 import BookItem from '../book-item/BookItem';
 
-function ListBooks() {
+function ListBooks(Props) {
+  const { books } = Props;
+  console.log(books);
   return (
     <div>
-      <BookItem />
+      {
+        books.map((book) => (
+          <BookItem
+            key={book.id}
+            book={book}
+          />
+        ))
+      }
     </div>
   );
 }

@@ -1,17 +1,25 @@
 import React from 'react';
 import './BookItem.css';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../../redux/books/books';
 
-function BookItem() {
+function BookItem(Props) {
+  const dispatch = useDispatch();
+  const { book } = Props;
+  const clickHandle = (e) => {
+    // removeBookProps(e.target.value);
+    dispatch(removeBook(e.target.value));
+  };
   return (
     <div>
       <div className="Lesson-Panel layout">
         <div>
           <span className="School-of">
-            Action
+            { book.category }
           </span>
           <div>
             <span className="Title">
-              The Hunger Games
+              { book.title }
             </span>
           </div>
           <div>
@@ -29,7 +37,7 @@ function BookItem() {
           </div>
         </div>
         <div>
-          <button type="button" className="btn">
+          <button type="button" className="btn" value={book.id} onClick={clickHandle}>
             Remove
           </button>
         </div>
@@ -39,12 +47,3 @@ function BookItem() {
 }
 
 export default BookItem;
-
-  <div>
-    <span className="Comments">
-      Comments  |
-    </span>
-    <span className="Edit">
-      Edit
-    </span>
-  </div>;
