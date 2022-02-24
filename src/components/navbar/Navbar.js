@@ -4,21 +4,26 @@ import './navbar.css';
 
 function Navbar() {
   return (
-    <div>
-      <nav className="panel-bg">
-        <div className="brand">
-          <Link className="Bookstore-CMS" to="/">
+    <nav className="nav">
+      <div className="navbar">
+        <div>
+          <Link className="brand" to="/">
             Bookstore CMS
           </Link>
-          <Link to="/" className="books">
+          <Link to="/" className="nav-items">
             BOOKS
           </Link>
-          <Link to="categories" className="categories">
+          <Link to="categories" className="nav-items">
             CATEGORIES
           </Link>
         </div>
-      </nav>
-    </div>
+      </div>
+      <div>
+        <div className="nav-items nav-icon">
+          <i className="fas fa-user" />
+        </div>
+      </div>
+    </nav>
   );
 }
 

@@ -41,7 +41,7 @@ function AddNewBooks() {
           <option value="History"> History </option>
           <option value="Chemistry"> Chemistry </option>
         </select>
-        <button className="btn" type="submit"> ADD BOOK </button>
+        <button className="add-book" type="submit"> ADD BOOK </button>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import './BookItem.css';
 import { useDispatch } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
+import progress from './images/Group.png';
 import { removeBook } from '../../redux/books/books';
 
 function BookItem(Props) {
@@ -15,35 +16,55 @@ function BookItem(Props) {
     dispatch(removeBook(e.target.value));
   };
   return (
-    <div>
+    <div className="container-fluid">
       <div className="Lesson-Panel layout">
         <div>
-          <span className="School-of">
+          <div className="book-category">
             { book.category }
-          </span>
+          </div>
           <div>
-            <div className="book-title">
+            <h2 className="book-title">
               { book.title }
-            </div>
+            </h2>
           </div>
-          <div>
-            <span className="Suzanne-Collins">
-              Suzanne Collins
-            </span>
+          <div className="author">
+            Suzanne Collins
           </div>
-          <div>
+          <div className="controls">
             <span className="Comments">
-              Comments  |
+              Comments
+            </span>
+            <span className="Comments">
+              Edit
             </span>
             <span className="Edit">
-              Edit
+              <button className="remove Edit" type="button" value={book.item_id} onClick={clickHandle}>
+                Remove
+              </button>
             </span>
           </div>
         </div>
+        <div className="progress-section">
+          <div>
+            <img src={progress} className="progress" alt="progress wheel" />
+          </div>
+          <div>
+            <h1 className="Percent-Complete">65% </h1>
+            <p className="completed"> Completed </p>
+          </div>
+        </div>
         <div>
-          <button type="button" className="btn" value={book.item_id} onClick={clickHandle}>
-            Remove
-          </button>
+          <div className="chap">
+            <h4> CURRENT CHAPTER </h4>
+          </div>
+          <p className="current-chap">
+            Chapter 17
+          </p>
+          <div>
+            <button type="button" className="btn">
+              update progress
+            </button>
+          </div>
         </div>
       </div>
     </div>
