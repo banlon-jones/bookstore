@@ -15,7 +15,14 @@ function AddNewBooks() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { id: new Date().getTime(), title, category };
+    const payload = { item_id: new Date().getTime(), title, category };
+    fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/1g1Rz39w3QzdRJbRUFqe/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
     dispatch(addBook(payload));
     setCategory('');
     setTitle('');
@@ -28,8 +35,8 @@ function AddNewBooks() {
       <form onSubmit={handleSubmit}>
         <input type="text" name="title" className="book-title-Panel" placeholder="Book Title" value={title} onChange={handleOnchange} required />
         <select className="select-Panel" placeholder="Categories" value={category} onChange={handleSelect} required>
-          <option disabled> category </option>
-          <option value="Action"> Action </option>
+          <option> select category </option>
+          <option value="Fiction"> Fiction </option>
           <option value="Health"> Health </option>
           <option value="History"> History </option>
           <option value="Chemistry"> Chemistry </option>

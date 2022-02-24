@@ -1,13 +1,17 @@
 import React from 'react';
 import './BookItem.css';
 import { useDispatch } from 'react-redux';
+// eslint-disable-next-line no-unused-vars
 import { removeBook } from '../../redux/books/books';
 
 function BookItem(Props) {
+  // eslint-disable-next-line no-unused-vars
   const dispatch = useDispatch();
   const { book } = Props;
   const clickHandle = (e) => {
-    // removeBookProps(e.target.value);
+    fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/1g1Rz39w3QzdRJbRUFqe/books/${e.target.value}`, {
+      method: 'DELETE',
+    });
     dispatch(removeBook(e.target.value));
   };
   return (
@@ -18,9 +22,9 @@ function BookItem(Props) {
             { book.category }
           </span>
           <div>
-            <span className="Title">
+            <div className="book-title">
               { book.title }
-            </span>
+            </div>
           </div>
           <div>
             <span className="Suzanne-Collins">
@@ -37,7 +41,7 @@ function BookItem(Props) {
           </div>
         </div>
         <div>
-          <button type="button" className="btn" value={book.id} onClick={clickHandle}>
+          <button type="button" className="btn" value={book.item_id} onClick={clickHandle}>
             Remove
           </button>
         </div>
